@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="description" content="A brief introduction to Web Components">
     <title>WebComponents</title>
+    <script async type="module" src="js/main.mjs"></script>
     <link rel="preload" href="styles/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
     <noscript><link rel="stylesheet" href="styles/main.css"></noscript>
 </head>
@@ -17,9 +18,21 @@
         <div>
             <zep-h3 class="wc-headline wc-headline--xl">Agenda</zep-h3>
             <ol class="wc-list">
-                <li class="wc-list__item">Basics / Custom Elements</li>
-                <li class="wc-list__item">Shadow DOM</li>
-                <li class="wc-list__item">Templates & slots</li>
+                <li class="wc-list__item">
+                    <a class="wc-link" href="basics.html" title="Go to Basics / Custom Elements page">
+                        Basics / Custom Elements
+                    </a>
+                </li>
+                <li class="wc-list__item">
+                    <a class="wc-link" href="shadow-dom.html" title="Go to Shadow DOM page">
+                        Shadow DOM
+                    </a>
+                </li>
+                <li class="wc-list__item">
+                    <a class="wc-link" href="templates-and-slots.html" title="Go to Template & slots page">
+                        Templates & slots
+                    </a>
+                </li>
             </ol>
         </div>
     </main>
@@ -28,6 +41,7 @@
         <button title="Go to previous site" data-navigation="prev" class="wc-navigation__button wc-navigation__button--prev">previous page</button>
         <button title="Go to next site" data-navigation="next" class="wc-navigation__button wc-navigation__button--next">next page</button>
     </nav>
-    <script src="main.js"></script>
+
+    <script defer type="module" src="js/navigation.mjs"></script>
 </body>
 </html>

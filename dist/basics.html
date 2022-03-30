@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="description" content="A brief introduction to Web Components - Chapter 1: Basics">
     <title>WebComponents - Basics</title>
-    <script src="js/ZepH1.js"></script>
+    <script async type="module" src="js/main.mjs"></script>
+    <script async src="js/ZepH1.js"></script>
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-core.min.js" integrity="sha512-LCKPTo0gtJ74zCNMbWw04ltmujpzSR4oW+fgN+Y1YclhM5ZrHCZQAJE4quEodcI/G122sRhSGU2BsSRUZ2Gu3w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-GP4x8UWxWyh4BMbyJGOGneiTbkrWEF5izsVJByzVLodP8CuJH/n936+yQDMJJrOPUHLgyPbLiGw2rXmdvGdXHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
     <link rel="preload" href="styles/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
     <noscript>
         <link rel="stylesheet" href="styles/main.css">
@@ -21,7 +25,7 @@
     </header>
     <main class="wc-container">
         <section class="wc-content">
-            <h1 class="wc-headline--xl">Basics</h1>
+            <h2 class="wc-headline wc-headline--xl">Basics</h2>
             <p>Struggling with complex HTML and associated styles and scripts to render custom UI controls and use them multiple times?</p>
             <p>Need to support different javascript frameworks?</p>
             <p>Why not just use Web Components?</p>
@@ -43,12 +47,12 @@
             <p>Simple example:</p>
             <pre class="wc-code">
                     <code class="language-javascript">
-    class ZepHeadline extends HTMLElement {
-        connectedCallback() {
-            this.innerHTML = `&lt;h1&gt;Zeppelin&lt;/h1&gt;`;
-        }
+class ZepHeadline extends HTMLElement {
+    connectedCallback() {
+        this.innerHTML = `&lt;h1&gt;Zeppelin&lt;/h1&gt;`;
     }
-    customElements.define('zep-headline', ZepHeadline);
+}
+customElements.define('zep-headline', ZepHeadline);
                     </code>
                 </pre>
 
@@ -82,11 +86,7 @@
         <button title="Go to next site" data-navigation="next" class="wc-navigation__button wc-navigation__button--next">next page</button>
     </nav>
 
-
-    <script src="main.js"></script>
-    <script async src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-core.min.js" integrity="sha512-LCKPTo0gtJ74zCNMbWw04ltmujpzSR4oW+fgN+Y1YclhM5ZrHCZQAJE4quEodcI/G122sRhSGU2BsSRUZ2Gu3w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script async src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-GP4x8UWxWyh4BMbyJGOGneiTbkrWEF5izsVJByzVLodP8CuJH/n936+yQDMJJrOPUHLgyPbLiGw2rXmdvGdXHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+    <script defer type="module" src="js/navigation.mjs"></script>
     <script defer src="https://cdn.jsdelivr.net/gh/ireade/caniuse-embed/public/caniuse-embed.min.js"></script>
 </body>
 </html>

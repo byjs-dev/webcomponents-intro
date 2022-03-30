@@ -1,13 +1,13 @@
 // Don't like IIFE? -> use as "module"
 
-// No SHADOW DOM - no scoped styles -> inline style tag works mostly - but is invalid HTML
+// No SHADOW DOM - no scoped styles -> style tag inside body works mostly - but is invalid HTML
+// Please don't do that
 const template = document.createElement('template');
 template.innerHTML = `
 <style>
-    .zep-h2 {
-        font-size: 1.5rem;
-        font-weight: 700;
-        margin: 1rem 0;
+    zep-h2 {
+        font-size: 1rem !important;
+        font-weight: 400 !important;
     }
 </style>
 `;
