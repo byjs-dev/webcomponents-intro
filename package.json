@@ -4,9 +4,14 @@
     "version": "1.0.0",
     "description": "A brief introduction to Web Components",
     "scripts": {
-        "serve": "http-server ./dist"
+        "serve": "http-server ./docs"
     },
-    "keywords": ["webcomponents", "custom elements", "shadow DOM", "HTML template"],
+    "keywords": [
+        "webcomponents",
+        "custom elements",
+        "shadow DOM",
+        "HTML template"
+    ],
     "author": "",
     "license": "MIT",
     "devDependencies": {

@@ -1,2 +1,4 @@
-// Yes, it's ugly - for now
-export default ['/webcomponents-intro/', '/webcomponents-intro/basics.html', '/webcomponents-intro/shadow-dom.html', '/webcomponents-intro/templates-and-slots.html'];
+const routePrefix = location.host === 'byjs-dev.github.io' ? '/webcomponents-intro' : '';
+const pages = ['/', '/basics.html', '/shadow-dom.html', '/templates-and-slots.html'];
+const routes = pages.map((page) => `${routePrefix}${page}`);
+export default routes;
