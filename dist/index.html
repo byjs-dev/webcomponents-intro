@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="A brief introduction to Web Components">
+    <title>WebComponents</title>
+    <link rel="preload" href="styles/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
+    <noscript><link rel="stylesheet" href="styles/main.css"></noscript>
+</head>
+<body>
+    <header class="wc-container">
+        <h1 class="wc-headline wc-headline--xxl wc-headline--page">A brief introduction to Web Components</h1>
+    </header>
+
+    <main class="wc-container">
+        <div>
+            <zep-h3 class="wc-headline wc-headline--xl">Agenda</zep-h3>
+            <ol class="wc-list">
+                <li class="wc-list__item">Basics / Custom Elements</li>
+                <li class="wc-list__item">Shadow DOM</li>
+                <li class="wc-list__item">Templates & slots</li>
+            </ol>
+        </div>
+    </main>
+
+    <nav class="wc-navigation">
+        <button title="Go to previous site" data-navigation="prev" class="wc-navigation__button wc-navigation__button--prev">previous page</button>
+        <button title="Go to next site" data-navigation="next" class="wc-navigation__button wc-navigation__button--next">next page</button>
+    </nav>
+    <script src="main.js"></script>
+</body>
+</html>

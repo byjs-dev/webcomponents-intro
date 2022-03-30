@@ -1,0 +1,37 @@
+{
+    "name": "@zepdev/webpack-use-webcomponent-lib",
+    "version": "1.0.0",
+    "description": "",
+    "private": true,
+    "scripts": {
+        "build": "webpack --watch",
+        "serve": "http-server ./dist",
+        "dev": "webpack serve"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "MIT",
+    "devDependencies": {
+        "@babel/core": "^7.17.5",
+        "@babel/preset-env": "^7.16.11",
+        "@zepdev/web-components-library": "^1.7.0",
+        "babel-loader": "^8.2.3",
+        "html-webpack-plugin": "^5.5.0",
+        "http-server": "^14.1.0",
+        "regenerator-runtime": "^0.13.9",
+        "terser-webpack-plugin": "^5.3.1",
+        "webpack": "^5.69.1",
+        "webpack-cli": "^4.9.2",
+        "webpack-dev-server": "^4.7.4"
+    },
+    "dependencies": {
+        "core-js": "^3.21.1",
+        "history": "^5.3.0"
+    },
+    "babel": {
+        "presets": [
+            "@babel/preset-env"
+        ]
+    },
+    "browserslist": ["> 0.5%", "not dead", "not IE 11"]
+}
