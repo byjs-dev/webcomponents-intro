@@ -5,33 +5,29 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="description" content="A brief introduction to Web Components - Chapter 1: Basics">
     <title>WebComponents - Basics</title>
-    <script async type="module" src="js/main.mjs"></script>
-    <script async src="js/ZepH1.js"></script>
-    <script async src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-core.min.js" integrity="sha512-LCKPTo0gtJ74zCNMbWw04ltmujpzSR4oW+fgN+Y1YclhM5ZrHCZQAJE4quEodcI/G122sRhSGU2BsSRUZ2Gu3w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script async src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-GP4x8UWxWyh4BMbyJGOGneiTbkrWEF5izsVJByzVLodP8CuJH/n936+yQDMJJrOPUHLgyPbLiGw2rXmdvGdXHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
     <link rel="preload" href="styles/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
     <noscript>
         <link rel="stylesheet" href="styles/main.css">
     </noscript>
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/themes/prism-tomorrow.min.css" as="style" integrity="sha512-vswe+cgvic/XBoF1OcM/TeJ2FW0OofqAVdCZiEYkd6dwGXthvkSFWOoGGJgS2CW70VK5dQM5Oh+7ne47s74VTg==" crossorigin="anonymous" referrerpolicy="no-referrer" onload="this.onload=null;this.rel='stylesheet'"/>
-    <noscript>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/themes/prism-tomorrow.min.css" integrity="sha512-vswe+cgvic/XBoF1OcM/TeJ2FW0OofqAVdCZiEYkd6dwGXthvkSFWOoGGJgS2CW70VK5dQM5Oh+7ne47s74VTg==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    </noscript>
 </head>
 <body>
     <header class="wc-container">
-        <zep-h1 class="wc-headline wc-headline--xxl wc-headline--page">A brief introduction to Web Components</zep-h1>
+        <h1 class="wc-headline wc-headline--xxl wc-headline--page">A brief introduction to Web Components</h1>
     </header>
     <main class="wc-container">
         <section class="wc-content">
-            <h2 class="wc-headline wc-headline--xl">Basics</h2>
-            <p>Struggling with complex HTML and associated styles and scripts to render custom UI controls and use them multiple times?</p>
+            <h1 class="wc-headline wc-headline--xl">Basics</h1>
+            <p>Struggling with complex HTML, associated styles and scripts to render custom UI controls and use them multiple times?</p>
             <p>Need to support different javascript frameworks?</p>
             <p>Why not just use Web Components?</p>
             <p class="wc-hint">
                 Web Components are a great tool to deliver high-quality user experiences without complicated frameworks or build steps.
                 And they don’t run the risk of becoming obsolete.
+            </p>
+            <p class="wc-hint">
+                The benefit is that everyone, every SPA framework, and every website can consume your Web Components.
+                Web Components can help to increase the consistency of our applications, the look and feel of our brand.
+                Since all teams can use the same components, the applications look and feel the same.
             </p>
 
             <h2 class="wc-headline wc-headline--l">What are Web Components?</h2>
@@ -39,45 +35,8 @@
             <ol class="wc-list">
                 <li class="wc-list__item"><strong>Custom Elements</strong> - Custom elements allow web developers to define new HTML tags, extend existing ones, and create reusable UI components.</li>
                 <li class="wc-list__item"><strong>Shadow DOM</strong> - Shadow DOM provides a way for an element to own, render, and style a chunk of DOM that's separate from the rest of the page.</li>
-                <li class="wc-list__item"><strong>HTML templates</strong> - <code class="wc-code wc-code--inline language-html">&lt;template&gt;</code> allows you to declare fragments of the DOM which are parsed, insert at page load, and can be activated later at runtime.</li>
+                <li class="wc-list__item"><strong>HTML template</strong> - allows you to declare fragments of the DOM which are parsed, insert at page load, and can be activated later at runtime.</li>
             </ol>
-        </section>
-        <section class="wc-content">
-            <h1 class="wc-headline--xl">Custom Elements</h1>
-            <p>Simple example:</p>
-            <pre class="wc-code">
-                    <code class="language-javascript">
-class ZepHeadline extends HTMLElement {
-    connectedCallback() {
-        this.innerHTML = `&lt;h1&gt;Zeppelin&lt;/h1&gt;`;
-    }
-}
-customElements.define('zep-headline', ZepHeadline);
-                    </code>
-                </pre>
-
-            <p class="codepen" data-height="300" data-theme-id="dark" data-default-tab="html,result" data-slug-hash="ZEvJWRW" data-user="byjs-dev" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
-      <span>See the Pen <a href="https://codepen.io/byjs-dev/pen/ZEvJWRW">
-      Custom Element demo</a> by Joerg Schneider (<a href="https://codepen.io/byjs-dev">@byjs-dev</a>)
-      on <a href="https://codepen.io">CodePen</a>.</span>
-            </p>
-
-            <h2 class="wc-headline wc-headline--l">Browser support?</h2>
-            <p class="ciu_embed" data-feature="custom-elementsv1" data-periods="future_1,current,past_1,past_2" data-accessible-colours="false">
-                <picture>
-                    <source type="image/webp" srcset="https://caniuse.bitsofco.de/image/custom-elementsv1.webp">
-                    <source type="image/png" srcset="https://caniuse.bitsofco.de/image/custom-elementsv1.png">
-                    <img src="https://caniuse.bitsofco.de/image/custom-elementsv1.jpg" alt="Data on support for the custom-elementsv1 feature across the major browsers from caniuse.com">
-                </picture>
-            </p>
-
-            <h2 class="wc-headline wc-headline--l">Autonomous custom elements vs. customized built-in elements</h2>
-            <p>
-                Since partial support for Safari browsers refers to the use of customized built-in elements and currently excludes them
-                <span class="wc-ref">(see <a class="wc-link" href="https://caniuse.com/mdn-api_customelementregistry_builtin" title="CustomElementRegistry API: Customized built-in element support" target="_blank" rel="noopener noreferrer">https://caniuse.com/mdn-api_customelementregistry_builtin</a>)</span>,
-                let's clarify the difference.
-            </p>
-
         </section>
     </main>
 
@@ -86,8 +45,28 @@ customElements.define('zep-headline', ZepHeadline);
         <button title="Go to next site" data-navigation="next" class="wc-navigation__button wc-navigation__button--next">next page</button>
     </nav>
 
+    <footer class="wc-container wc-footer">
+        <p>Sources:</p>
+        <ul class="wc-list">
+            <li class="wc-list__item">
+                <a class="wc-link wc-ref" href="https://css-tricks.com/an-introduction-to-web-components/" target="_blan" rel="noopener noreferrer" title="Go to CSS Tricks - an-introduction-to-web-components article">
+                    https://css-tricks.com/an-introduction-to-web-components/
+                </a>
+            </li>
+            <li class="wc-list__item">
+                <a class="wc-link wc-ref" href="https://www.thinktecture.com/en/web-components/perks/" target="_blan" rel="noopener noreferrer" title="Go to Thinktecture - The perks of Web Components article">
+                    https://www.thinktecture.com/en/web-components/perks/
+                </a>
+            </li>
+            <li class="wc-list__item">
+                <a class="wc-link wc-ref" href="https://web.dev/custom-elements-v1/" target="_blan" rel="noopener noreferrer" title="Go to web.dev - Custom Elements v1 - Reusable Web Components article">
+                    https://web.dev/custom-elements-v1/
+                </a>
+            </li>
+        </ul>
+    </footer>
+
     <script defer type="module" src="js/navigation.mjs"></script>
-    <script defer src="https://cdn.jsdelivr.net/gh/ireade/caniuse-embed/public/caniuse-embed.min.js"></script>
 </body>
 </html>
 

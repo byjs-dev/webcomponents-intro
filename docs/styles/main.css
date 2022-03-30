@@ -101,7 +101,10 @@ iframe {
 
 .wc-content {
     padding-bottom: 1rem;
+    margin: 0;
+    width: 100%;
 }
+
 
 .wc-code {
     font-size: var(--font-size-s) !important;
@@ -117,6 +120,28 @@ iframe {
     padding: 0.5rem 1rem;
     border-radius: var(--border-radius);
     border: 2px dashed var(--color-highlight);
+}
+
+.wc-hint--warn {
+    padding-left: 4rem;
+    position:relative;
+}
+
+.wc-hint--warn::before {
+    content: '\26a0';
+    display: inline-block;
+    position: absolute;
+    line-height: 1;
+    inset: 50% auto auto 1rem;
+    transform: translateY(-50%);
+    width: 1em;
+    font-size: 2rem;
+    height: 1em;
+    color: var(--color-highlight);
+}
+
+.wc-footer {
+    margin-top: 2rem;
 }
 
 .wc-navigation {

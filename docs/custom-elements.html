@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="A brief introduction to Web Components - Chapter 1: Basics">
+    <title>WebComponents - Custom Elements</title>
+    <script async type="module" src="js/main.mjs"></script>
+    <script async src="js/ZepH1.js"></script>
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-core.min.js" integrity="sha512-LCKPTo0gtJ74zCNMbWw04ltmujpzSR4oW+fgN+Y1YclhM5ZrHCZQAJE4quEodcI/G122sRhSGU2BsSRUZ2Gu3w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-GP4x8UWxWyh4BMbyJGOGneiTbkrWEF5izsVJByzVLodP8CuJH/n936+yQDMJJrOPUHLgyPbLiGw2rXmdvGdXHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+    <link rel="preload" href="styles/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
+    <noscript>
+        <link rel="stylesheet" href="styles/main.css">
+    </noscript>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/themes/prism-tomorrow.min.css" as="style" integrity="sha512-vswe+cgvic/XBoF1OcM/TeJ2FW0OofqAVdCZiEYkd6dwGXthvkSFWOoGGJgS2CW70VK5dQM5Oh+7ne47s74VTg==" crossorigin="anonymous" referrerpolicy="no-referrer" onload="this.onload=null;this.rel='stylesheet'"/>
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/themes/prism-tomorrow.min.css" integrity="sha512-vswe+cgvic/XBoF1OcM/TeJ2FW0OofqAVdCZiEYkd6dwGXthvkSFWOoGGJgS2CW70VK5dQM5Oh+7ne47s74VTg==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    </noscript>
+</head>
+<body>
+    <header class="wc-container">
+        <zep-h1 class="wc-headline wc-headline--xxl wc-headline--page">A brief introduction to Web Components</zep-h1>
+    </header>
+    <main class="wc-container">
+        <section class="wc-content">
+            <h1 class="wc-headline wc-headline--xl">Custom Elements</h1>
+            <h2 class="wc-headline wc-headline--l">Autonomous Custom Elements</h2>
+            <figure class="wc-content">
+                <figcaption>Simple autonomous Custom Element example:</figcaption>
+                <pre class="wc-code">
+                    <code class="language-javascript">
+class ZepHeadline extends HTMLElement {
+    connectedCallback() {
+        this.innerHTML = `&lt;h1&gt;Zeppelin&lt;/h1&gt;`;
+    }
+}
+customElements.define('zep-headline', ZepHeadline);
+                    </code>
+                </pre>
+                <p class="codepen" data-height="300" data-theme-id="dark" data-default-tab="html,result" data-slug-hash="ZEvJWRW" data-user="byjs-dev" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+                    <span>
+                        See the Pen
+                        <a href="https://codepen.io/byjs-dev/pen/ZEvJWRW"> Custom Element demo</a>
+                        by Joerg Schneider (<a href="https://codepen.io/byjs-dev">@byjs-dev</a>)
+                        on <a href="https://codepen.io">CodePen</a>.
+                    </span>
+                </p>
+            </figure>
+
+            <h2 class="wc-headline wc-headline--l">Browser support</h2>
+            <p>
+                Nowadays the browser support for Custom Elements (V1) is really good. There are also many polyfill options for older browsers like Internet Explorer.
+            </p>
+            <p class="ciu_embed" data-feature="custom-elementsv1" data-periods="future_1,current,past_1,past_2" data-accessible-colours="false">
+                <picture>
+                    <source type="image/webp" srcset="https://caniuse.bitsofco.de/image/custom-elementsv1.webp">
+                    <source type="image/png" srcset="https://caniuse.bitsofco.de/image/custom-elementsv1.png">
+                    <img src="https://caniuse.bitsofco.de/image/custom-elementsv1.jpg" alt="Data on support for the custom-elementsv1 feature across the major browsers from caniuse.com">
+                </picture>
+            </p>
+        </section>
+        <section class="wc-content">
+            <h1 class="wc-headline wc-headline--xl">Autonomous custom elements vs. customized built-in elements</h1>
+            <p>
+                Since partial support for Safari browsers refers to the use of customized built-in elements and still (03/2022) excludes them
+                <span class="wc-ref">(see <a class="wc-link" href="https://caniuse.com/mdn-api_customelementregistry_builtin" title="CustomElementRegistry API: Customized built-in element support" target="_blank" rel="noopener noreferrer">https://caniuse.com/mdn-api_customelementregistry_builtin</a>)</span>,
+                we should clarify the difference between them and autonomous custom elements.
+            </p>
+
+            <h2 class="wc-headline wc-headline--l">Customized built-in elements</h2>
+            <p>
+                A customized built-in element is a custom element that extends one of the browser's built-in HTML tags. The primary benefit of extending an existing element is to gain all of its features (DOM properties, methods, accessibility).
+                There's no better way to write a progressive web app than to progressively enhance existing HTML elements.
+            </p>
+
+            <figure class="wc-content">
+                <figcaption>Simple customized built-in element example:</figcaption>
+                <pre class="wc-code">
+                    <code class="language-javascript">
+export default class ZepToggle extends HTMLButtonElement {
+    #toggleValue;
+
+    constructor() {
+        super();
+        this.addEventListener('click', e => this.toggle());
+    }
+
+    connectedCallback() {
+        this.style.color   = 'white';
+        this.style.padding = '0.5em';
+        this.toggle();
+    }
+
+    toggle() {
+        this.#toggleValue          = !this.#toggleValue;
+        this.style.backgroundColor = this.#toggleValue ? 'green' : 'darkred';
+    }
+
+}
+customElements.define('zep-toggle', ZepToggle, {extends: 'button'});
+                    </code>
+                </pre>
+                <p class="codepen" data-height="300" data-theme-id="dark" data-default-tab="html,result" data-slug-hash="abEyYPa" data-editable="true" data-user="byjs-dev" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+                  <span>See the Pen <a href="https://codepen.io/byjs-dev/pen/abEyYPa">
+                  Simple customized built-in Element example</a> by Joerg Schneider (<a href="https://codepen.io/byjs-dev">@byjs-dev</a>)
+                  on <a href="https://codepen.io">CodePen</a>.</span>
+                </p>
+                <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+            </figure>
+            <button is="zep-toggle">Click to toggle</button>
+            <p class="wc-hint wc-hint--warn">Keep in mind, that this does not work for Webkit Browsers yet.</p>
+        </section>
+    </main>
+
+    <nav class="wc-navigation">
+        <button title="Go to previous site" data-navigation="prev" class="wc-navigation__button wc-navigation__button--prev">previous page</button>
+        <button title="Go to next site" data-navigation="next" class="wc-navigation__button wc-navigation__button--next">next page</button>
+    </nav>
+
+    <footer class="wc-container wc-footer">
+        <p>Sources:</p>
+        <ul class="wc-list">
+            <li class="wc-list__item">
+                <a class="wc-link wc-ref" href="https://css-tricks.com/an-introduction-to-web-components/" target="_blan" rel="noopener noreferrer" title="Go to CSS Tricks - an-introduction-to-web-components article">
+                    https://css-tricks.com/an-introduction-to-web-components/
+                </a>
+            </li>
+            <li class="wc-list__item">
+                <a class="wc-link wc-ref" href="https://www.thinktecture.com/en/web-components/perks/" target="_blan" rel="noopener noreferrer" title="Go to Thinktecture - The perks of Web Components article">
+                    https://www.thinktecture.com/en/web-components/perks/
+                </a>
+            </li>
+            <li class="wc-list__item">
+                <a class="wc-link wc-ref" href="https://web.dev/custom-elements-v1/" target="_blan" rel="noopener noreferrer" title="Go to web.dev - Custom Elements v1 - Reusable Web Components article">
+                    https://web.dev/custom-elements-v1/
+                </a>
+            </li>
+        </ul>
+    </footer>
+
+    <script defer type="module" src="js/navigation.mjs"></script>
+    <script defer src="https://cdn.jsdelivr.net/gh/ireade/caniuse-embed/public/caniuse-embed.min.js"></script>
+</body>
+</html>
+
+
+
+
