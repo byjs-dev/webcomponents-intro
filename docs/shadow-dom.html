@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="description" content="A brief introduction to Web Components - Chapter 3: Shadow DOM">
     <title>WebComponents - Shadow DOM</title>
-    <script async type="module" src="js/main.mjs"></script>
+    <script async type="module" src="js/ZepHeadline.mjs"></script>
     <script async src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-core.min.js" integrity="sha512-LCKPTo0gtJ74zCNMbWw04ltmujpzSR4oW+fgN+Y1YclhM5ZrHCZQAJE4quEodcI/G122sRhSGU2BsSRUZ2Gu3w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script async src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-GP4x8UWxWyh4BMbyJGOGneiTbkrWEF5izsVJByzVLodP8CuJH/n936+yQDMJJrOPUHLgyPbLiGw2rXmdvGdXHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
@@ -21,10 +21,138 @@
         <h1 class="wc-headline wc-headline--xxl wc-headline--page">A brief introduction to Web Components</h1>
     </header>
     <main class="wc-container">
-        <div>
-            <h2>Shadow DOM</h2>
+        <section class="wc-content">
+            <h1 class="wc-headline wc-headline--xl">Shadow DOM</h1>
+            <p class="wc-content">
+                An important aspect of web components is encapsulation — being able to keep the markup structure, style,
+                and behavior hidden and separate from other code on the page so that different parts do not clash,
+                and the code can be kept nice and clean. The Shadow DOM API is a key part of this,
+                providing a way to attach a hidden separated DOM to an element.
+            </p>
+            <p>
+                To add a shadow root (the root node of the shadow tree), we need to call our element’s attachShadow method.
+            </p>
+            <figure class="wc-content">
+                <figcaption>Basic usage of shadow DOM:</figcaption>
+                <pre class="wc-code">
+                    <code class="language-javascript">
+const template = document.createElement('template');
 
-        </div>
+template.innerHTML = `
+    &lt;style&gt;
+        :host {
+            color: darkred;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+        :host([size="s"]) {
+            font-size: .75rem;
+        }
+        :host([size="m"]) {
+            font-size: 1rem;
+        }
+        :host([size="l"]) {
+            font-size: 1.5rem;
+        }
+        :host([size="xl"]) {
+            font-size: 2rem;
+        }
+    &lt;/style&gt;
+    &lt;slot&gt;&lt;/slot&gt;
+`;
+
+export default class ZepHeadline extends HTMLElement {
+
+    static get observedAttributes() {
+        return ['size'];
+    }
+
+    #size = 'm';
+
+    set size(value) {
+      this.setAttribute('size', value);
+    }
+
+    get size() {
+       return this.getAttribute('size') || this.#size;
+    }
+
+    constructor() {
+        super();
+        this.attachShadow({mode: 'open'});
+        this.shadowRoot.appendChild(template.content.cloneNode(true));
+    }
+
+    connectedCallback() {
+        ZepHeadline.observedAttributes.forEach((attr) => this.#upgradeProperty(attr));
+        console.log('ZepHeadline element added to page.');
+    }
+
+    disconnectedCallback() {
+        console.log('ZepHeadline element removed from page.');
+    }
+
+    adoptedCallback() {
+        console.log('ZepHeadline element moved to new page.');
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        console.log(`ZepHeadline element attribute ${name} changed from ${oldValue} to ${newValue}.`);
+
+        //newValue = utils.stripTags(newValue);
+
+        if (newValue !== oldValue) {
+            this.#size = newValue;
+        }
+    }
+
+    #upgradeProperty(prop) {
+        if (this.hasOwnProperty(prop)) {
+            const value = this[prop];
+            delete this[prop];
+            this[prop] = value;
+        }
+        return this;
+    }
+}
+customElements.define('zep-headline', ZepHeadline);
+                    </code>
+                </pre>
+
+                <p class="codepen" data-height="300" data-theme-id="dark" data-default-tab="html,result" data-slug-hash="KKZXwmZ" data-editable="true" data-user="byjs-dev" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+                    <span>See the Pen <a href="https://codepen.io/byjs-dev/pen/KKZXwmZ">
+                    basic usage of shadow DOM</a> by Joerg Schneider (<a href="https://codepen.io/byjs-dev">@byjs-dev</a>)
+                    on <a href="https://codepen.io">CodePen</a>.</span>
+                </p>
+            </figure>
+            <p class="wc-hint">
+                Use a template element to clone DOM, instead of setting the innerHTML of the shadowRoot.
+                It reduces the cost of parsing HTML because the template content is parsed only once, while calling innerHTML on shadowRoot parses the HTML for each instance.
+                In the next chapter "Template & Slots" you will learn more about templates.
+            </p>
+            <p>
+                Here is a real life example of the rendered <code class="wc-code wc-code--inline language-html">&lt;zep-headline&gt;</code> component:
+            </p>
+            <zep-headline size="xl">Zeppelin</zep-headline>
+
+            <h2 class="wc-headline wc-headline--l">Browser support</h2>
+            <p class="ciu_embed" data-feature="shadowdomv1" data-periods="future_1,current,past_1,past_2" data-accessible-colours="false">
+                <picture>
+                    <source type="image/webp" srcset="https://caniuse.bitsofco.de/image/shadowdomv1.webp">
+                    <source type="image/png" srcset="https://caniuse.bitsofco.de/image/shadowdomv1.png">
+                    <img src="https://caniuse.bitsofco.de/image/shadowdomv1.jpg" alt="Data on support for the shadowdomv1 feature across the major browsers from caniuse.com">
+                </picture>
+            </p>
+        </section>
+        <section class="wc-content">
+            <h1 class="wc-headline wc-headline--xl">mode 'open' vs. 'closed'</h1>
+            <p>
+                If you attach a shadow root to a custom element with mode: closed set,
+                you won't be able to access the shadow DOM from the outside —
+                myCustomElem.shadowRoot returns null. This is the case with built in elements that contain shadow DOMs,
+                such as <code class="wc-code wc-code--inline language-html">&lt;video&gt;</code>.
+            </p>
+        </section>
     </main>
 
     <nav class="wc-navigation">
