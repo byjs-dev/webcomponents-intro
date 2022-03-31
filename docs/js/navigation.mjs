@@ -63,6 +63,7 @@ export default class Navigation {
             const homeButton = document.getElementById('wc-button-home');
             homeButton?.setAttribute('href', paths[0]);
         }
+        return this;
     }
 }
 Navigation.addListeners().setHomeUrl();
