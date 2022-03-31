@@ -105,7 +105,6 @@ iframe {
     width: 100%;
 }
 
-
 .wc-code {
     font-size: var(--font-size-s) !important;
     border-radius: var(--border-radius);
@@ -113,6 +112,7 @@ iframe {
 
 .wc-content .wc-code--inline {
     padding: 0 1rem;
+    white-space: nowrap;
 }
 
 .wc-hint {

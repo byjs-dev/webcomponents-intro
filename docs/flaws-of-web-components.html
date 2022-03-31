@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="A brief introduction to Web Components - Chapter 3: Templates & Slots">
+    <title>WebComponents - Flaws of Web Components</title>
+    <script type="module" src="js/main.mjs"></script>
+    <link rel="preload" href="styles/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
+    <noscript><link rel="stylesheet" href="styles/main.css"></noscript>
+</head>
+<body>
+    <header class="wc-container">
+        <h1 class="wc-headline wc-headline--xxl wc-headline--page">A brief introduction to Web Components</h1>
+    </header>
+    <main class="wc-container">
+        <div>
+            <h2>Flaws of Web Components</h2>
+        </div>
+    </main>
+
+    <nav class="wc-navigation">
+        <button title="Go to previous site" data-navigation="prev" class="wc-navigation__button wc-navigation__button--prev">previous page</button>
+        <button title="Go to next site" data-navigation="next" class="wc-navigation__button wc-navigation__button--next">next page</button>
+    </nav>
+    <script defer type="module" src="js/navigation.mjs"></script>
+</body>
+</html>
+
+
+
+
