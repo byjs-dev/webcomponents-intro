@@ -49,7 +49,6 @@ iframe {
     background-color: var(--color-highlight-500);
     transform: translateX(.5rem);
     transition:
-            background-color .2s ease-in-out,
             filter .2s ease-in-out,
             transform .2s ease-in-out;
     backdrop-filter: blur(.125rem);
@@ -187,7 +186,6 @@ iframe {
     height: 3rem;
     background-color: var(--color-highlight-500); /*rgba(255, 255, 255, .6);*/
     transition:
-            background-color .2s ease-in-out,
             filter .2s ease-in-out;
     backdrop-filter: blur(.125rem);
     border-radius: 50%;
