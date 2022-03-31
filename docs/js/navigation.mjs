@@ -61,7 +61,7 @@ export default class Navigation {
     static setHomeUrl() {
         if(location.pathname !== paths[0]){
             const homeButton = document.getElementById('wc-button-home');
-            homeButton?.setAttribute('href', paths[1]);
+            homeButton?.setAttribute('href', paths[0]);
         }
     }
 }
