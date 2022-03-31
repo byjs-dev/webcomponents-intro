@@ -1,4 +1,4 @@
-const routePrefix = location.host === 'byjs-dev.github.io' ? '/webcomponents-intro' : '';
+export const prefix = location.host === 'byjs-dev.github.io' ? '/webcomponents-intro' : '';
 const pages = [
     '/',
     '/basics.html',
@@ -7,5 +7,4 @@ const pages = [
     '/templates-and-slots.html',
     '/flaws-of-web-components.html',
 ];
-const routes = pages.map((page) => `${routePrefix}${page}`);
-export default routes;
+export const paths = pages.map((page) => `${prefix}${page}`);

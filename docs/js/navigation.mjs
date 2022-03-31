@@ -1,4 +1,4 @@
-import routes from './routes.mjs';
+import {paths} from './routes.mjs';
 
 // don't do that primitive stuff at work ;)
 
@@ -7,17 +7,19 @@ export default class Navigation {
     static #elementListeners = [];
 
     static next() {
-        const currentRoutesIndex = routes.indexOf(location.pathname);
+        const currentRoutesIndex = paths.indexOf(location.pathname);
         if (currentRoutesIndex === -1) return;
-        const nextIndex = currentRoutesIndex === routes.length - 1 ? 0 : currentRoutesIndex + 1;
-        window.open(routes[nextIndex], '_self');
+        const nextIndex = currentRoutesIndex === paths.length - 1 ? 0 : currentRoutesIndex + 1;
+        window.open(paths[nextIndex], '_self');
+        return this;
     }
 
     static prev() {
-        const currentRoutesIndex = routes.indexOf(location.pathname);
+        const currentRoutesIndex = paths.indexOf(location.pathname);
         if (currentRoutesIndex === -1) return;
-        const prevIndex = currentRoutesIndex > 0 ? currentRoutesIndex - 1 : routes.length - 1;
-        window.open(routes[prevIndex], '_self');
+        const prevIndex = currentRoutesIndex > 0 ? currentRoutesIndex - 1 : paths.length - 1;
+        window.open(paths[prevIndex], '_self');
+        return this;
     }
 
     static addListeners() {
@@ -28,6 +30,7 @@ export default class Navigation {
             listener.element.addEventListener(listener.event, listener.callback);
             this.#elementListeners.push(listener);
         });
+        return this;
     }
 
     static removeListeners() {
@@ -36,6 +39,7 @@ export default class Navigation {
             listener.element.removeEventListener(listener.event, listener.callback);
         });
         this.#elementListeners = [];
+        return this;
     }
 
     static handleKeyDown(e) {
@@ -51,6 +55,11 @@ export default class Navigation {
                 Navigation.next();
                 break
         }
+        return this;
+    }
+
+    static setHomeUrl() {
+        document.getElementById('wc-button-home')?.href = paths[0];
     }
 }
-Navigation.addListeners();
+Navigation.addListeners().setHomeUrl();
