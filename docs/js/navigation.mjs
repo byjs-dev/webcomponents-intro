@@ -59,7 +59,10 @@ export default class Navigation {
     }
 
     static setHomeUrl() {
-        document.getElementById('wc-button-home')?.href = paths[0];
+        if(location.pathname !== paths[0]){
+            const homeButton = document.getElementById('wc-button-home');
+            homeButton?.setAttribute('href', paths[1]);
+        }
     }
 }
 Navigation.addListeners().setHomeUrl();
