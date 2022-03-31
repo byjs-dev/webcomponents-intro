@@ -3,11 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="description" content="A brief introduction to Web Components - Chapter 3: Templates & Slots">
+    <meta name="description" content="A brief introduction to Web Components - Chapter 4: Templates & Slots">
     <title>WebComponents - Templates & Slots</title>
     <script type="module" src="js/main.mjs"></script>
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-core.min.js" integrity="sha512-LCKPTo0gtJ74zCNMbWw04ltmujpzSR4oW+fgN+Y1YclhM5ZrHCZQAJE4quEodcI/G122sRhSGU2BsSRUZ2Gu3w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-GP4x8UWxWyh4BMbyJGOGneiTbkrWEF5izsVJByzVLodP8CuJH/n936+yQDMJJrOPUHLgyPbLiGw2rXmdvGdXHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
     <link rel="preload" href="styles/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
-    <noscript><link rel="stylesheet" href="styles/main.css"></noscript>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/themes/prism-tomorrow.min.css" as="style" integrity="sha512-vswe+cgvic/XBoF1OcM/TeJ2FW0OofqAVdCZiEYkd6dwGXthvkSFWOoGGJgS2CW70VK5dQM5Oh+7ne47s74VTg==" crossorigin="anonymous" referrerpolicy="no-referrer" onload="this.onload=null;this.rel='stylesheet'"/>
+    <noscript>
+        <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/themes/prism-tomorrow.min.css" integrity="sha512-vswe+cgvic/XBoF1OcM/TeJ2FW0OofqAVdCZiEYkd6dwGXthvkSFWOoGGJgS2CW70VK5dQM5Oh+7ne47s74VTg==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    </noscript>
 </head>
 <body>
     <header class="wc-container">
@@ -16,15 +23,47 @@
     <main class="wc-container">
         <div>
             <h2>Templates & Slots</h2>
-            <h3>autonomous custom elements vs. customized built-in elements</h3>
         </div>
     </main>
 
     <nav class="wc-navigation">
+        <a class="wc-button-home" href="/" title="Go to home page">
+            <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Home</title><path
+                    d="M18.88 13c.31 0 .57.23.62.53v6.97c0 .3-.23.57-.53.61l-.1.01h-5a.63.63 0 01-.61-.53v-5.1a.63.63 0 00-.54-.61l-.1-.01h-1.24a.63.63 0 00-.62.53v5.1c0 .3-.24.57-.54.61l-.1.01h-5a.63.63 0 01-.61-.53v-6.97a.62.62 0 011.24-.1v6.35H9.5v-4.38c0-.98.76-1.79 1.73-1.86l.15-.01h1.25c.98 0 1.8.76 1.87 1.73v4.52h3.75v-6.25c0-.31.23-.57.54-.62h.09zM12 2.88c.44 0 .87.15 1.2.44l.13.1 8.49 8.5a.62.62 0 01-.8.95l-.08-.07-8.5-8.49a.62.62 0 00-.8-.06l-.08.06-8.5 8.5a.62.62 0 01-.95-.8l.08-.1 8.49-8.48c.35-.35.83-.55 1.32-.55z" fill="currentColor" fill-rule="evenodd"></path></svg>
+        </a>
         <button title="Go to previous site" data-navigation="prev" class="wc-navigation__button wc-navigation__button--prev">previous page</button>
         <button title="Go to next site" data-navigation="next" class="wc-navigation__button wc-navigation__button--next">next page</button>
     </nav>
+
+    <footer class="wc-container wc-footer">
+        <p>Sources:</p>
+        <ul class="wc-list">
+            <li class="wc-list__item">
+                <a class="wc-link wc-ref" href="https://css-tricks.com/an-introduction-to-web-components/" target="_blan" rel="noopener noreferrer" title="Go to CSS Tricks - an-introduction-to-web-components">
+                    CSS Tricks - An introduction to Web Components (https://css-tricks.com/an-introduction-to-web-components/)
+                </a>
+            </li>
+            <li class="wc-list__item">
+                <a class="wc-link wc-ref" href="https://web.dev/custom-elements-v1/" target="_blan" rel="noopener noreferrer" title="Go to web.dev - Custom Elements v1 - Reusable Web Components">
+                    web.dev - Custom Elements v1 - Reusable Web Components (https://web.dev/custom-elements-v1/)
+                </a>
+            </li>
+            <li class="wc-list__item">
+                <a class="wc-link wc-ref" href="https://web.dev/index.md/" target="_blan" rel="noopener noreferrer" title="Go to web.dev - Custom Elements Best Practices">
+                    web.dev - Custom Elements Best Practices (https://web.dev/index.md/)
+                </a>
+            </li>
+            <li class="wc-list__item">
+                <a class="wc-link wc-ref" href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots" target="_blan" rel="noopener noreferrer" title="Go to MDN - Using templates and slots">
+                    MDN - Using templates and slots (https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots)
+                </a>
+            </li>
+        </ul>
+    </footer>
+
+    <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
     <script defer type="module" src="js/navigation.mjs"></script>
+    <script defer src="https://cdn.jsdelivr.net/gh/ireade/caniuse-embed/public/caniuse-embed.min.js"></script>
 </body>
 </html>
 

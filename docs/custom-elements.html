@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="description" content="A brief introduction to Web Components - Chapter 1: Basics">
+    <meta name="description" content="A brief introduction to Web Components - Chapter 2: Custom Elements">
     <title>WebComponents - Custom Elements</title>
     <script async type="module" src="js/main.mjs"></script>
     <script async src="js/ZepH1.js"></script>
@@ -245,6 +245,10 @@ customElements.define('zep-headline', ZepHeadline);
     </main>
 
     <nav class="wc-navigation">
+        <a class="wc-button-home" href="/" title="Go to home page">
+            <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Home</title><path
+                    d="M18.88 13c.31 0 .57.23.62.53v6.97c0 .3-.23.57-.53.61l-.1.01h-5a.63.63 0 01-.61-.53v-5.1a.63.63 0 00-.54-.61l-.1-.01h-1.24a.63.63 0 00-.62.53v5.1c0 .3-.24.57-.54.61l-.1.01h-5a.63.63 0 01-.61-.53v-6.97a.62.62 0 011.24-.1v6.35H9.5v-4.38c0-.98.76-1.79 1.73-1.86l.15-.01h1.25c.98 0 1.8.76 1.87 1.73v4.52h3.75v-6.25c0-.31.23-.57.54-.62h.09zM12 2.88c.44 0 .87.15 1.2.44l.13.1 8.49 8.5a.62.62 0 01-.8.95l-.08-.07-8.5-8.49a.62.62 0 00-.8-.06l-.08.06-8.5 8.5a.62.62 0 01-.95-.8l.08-.1 8.49-8.48c.35-.35.83-.55 1.32-.55z" fill="currentColor" fill-rule="evenodd"></path></svg>
+        </a>
         <button title="Go to previous site" data-navigation="prev" class="wc-navigation__button wc-navigation__button--prev">previous page</button>
         <button title="Go to next site" data-navigation="next" class="wc-navigation__button wc-navigation__button--next">next page</button>
     </nav>
@@ -253,22 +257,26 @@ customElements.define('zep-headline', ZepHeadline);
         <p>Sources:</p>
         <ul class="wc-list">
             <li class="wc-list__item">
-                <a class="wc-link wc-ref" href="https://css-tricks.com/an-introduction-to-web-components/" target="_blan" rel="noopener noreferrer" title="Go to CSS Tricks - an-introduction-to-web-components">
+                <a class="wc-link wc-ref" href="https://html.spec.whatwg.org/multipage/custom-elements.html" target="_blank" rel="noopener noreferrer" title="Go to WHATWG - HTML Living Standard - 4.13 Web Components">
+                    WHATWG - HTML Living Standard - 4.13 Web Components (https://html.spec.whatwg.org/multipage/custom-elements.html)
+                </a>
+            </li><li class="wc-list__item">
+                <a class="wc-link wc-ref" href="https://css-tricks.com/an-introduction-to-web-components/" target="_blank" rel="noopener noreferrer" title="Go to CSS Tricks - An introduction to Web Components">
                     CSS Tricks - An introduction to Web Components (https://css-tricks.com/an-introduction-to-web-components/)
                 </a>
             </li>
             <li class="wc-list__item">
-                <a class="wc-link wc-ref" href="https://www.thinktecture.com/en/web-components/perks/" target="_blan" rel="noopener noreferrer" title="Go to Thinktecture - The perks of Web Components">
+                <a class="wc-link wc-ref" href="https://www.thinktecture.com/en/web-components/perks/" target="_blank" rel="noopener noreferrer" title="Go to Thinktecture - The perks of Web Components">
                     Thinktecture - The perks of Web Components (https://www.thinktecture.com/en/web-components/perks/)
                 </a>
             </li>
             <li class="wc-list__item">
-                <a class="wc-link wc-ref" href="https://web.dev/custom-elements-v1/" target="_blan" rel="noopener noreferrer" title="Go to web.dev - Custom Elements v1 - Reusable Web Components">
+                <a class="wc-link wc-ref" href="https://web.dev/custom-elements-v1/" target="_blank" rel="noopener noreferrer" title="Go to web.dev - Custom Elements v1 - Reusable Web Components">
                     web.dev - Custom Elements v1 - Reusable Web Components (https://web.dev/custom-elements-v1/)
                 </a>
             </li>
             <li class="wc-list__item">
-                <a class="wc-link wc-ref" href="https://web.dev/index.md/" target="_blan" rel="noopener noreferrer" title="Go to web.dev - Custom Elements Best Practices">
+                <a class="wc-link wc-ref" href="https://web.dev/index.md/" target="_blank" rel="noopener noreferrer" title="Go to web.dev - Custom Elements Best Practices">
                     web.dev - Custom Elements Best Practices (https://web.dev/index.md/)
                 </a>
             </li>

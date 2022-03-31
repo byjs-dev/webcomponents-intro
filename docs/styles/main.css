@@ -36,6 +36,31 @@ iframe {
     border-radius: var(--border-radius);
 }
 
+.wc-button-home {
+    display: grid;
+    align-content: center;
+    position: fixed;
+    inset: 3rem 0 auto auto;
+    width: 3rem;
+    height: 3rem;
+    color: black;
+    padding: .75rem;
+    border-radius: var(--border-radius) 0 0 var(--border-radius);
+    background-color: var(--color-highlight-500);
+    transform: translateX(.5rem);
+    transition:
+            background-color .2s ease-in-out,
+            filter .2s ease-in-out,
+            transform .2s ease-in-out;
+    backdrop-filter: blur(.125rem);
+}
+
+.wc-button-home:hover {
+    background-color: var(--color-highlight-800);
+    filter: drop-shadow(0 0.25rem .25rem rgba(0,0,0, .1));
+    transform: translateX(0);
+}
+
 .wc-headline {
     display: block;
     font-weight: bold;
@@ -195,4 +220,21 @@ iframe {
 .wc-ref {
     font-size: var(--font-size-s);
     font-style: italic;
+}
+
+@media  (max-width: 599px) {
+    :root {
+        --font-size-base: 16px;
+    }
+    .wc-link {
+        word-break: break-all;
+    }
+    .wc-button-home,
+    .wc-navigation{
+        transform-origin: right bottom;
+        transform: scale(.75, .75);
+    }
+    .wc-button-home:hover {
+        transform: scale(.75, .75);
+    }
 }
