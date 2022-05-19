@@ -24,6 +24,11 @@
                 and the code can be kept nice and clean. The Shadow DOM API is a key part of this,
                 providing a way to attach a hidden separated DOM to an element.
             </p>
+            <p class="wc-hint">
+                Shadow DOM fixes CSS and DOM. It introduces scoped styles to the web platform.
+                Without tools or naming conventions, you can bundle CSS with markup, hide implementation details,
+                and author self-contained components in vanilla JavaScript.
+            </p>
             <p>
                 To add a shadow root (the root node of the shadow tree), we need to call our element’s attachShadow method.
             </p>
@@ -147,6 +152,11 @@ customElements.define('zep-headline', ZepHeadline);
                 myCustomElem.shadowRoot returns null. This is the case with built in elements that contain shadow DOMs,
                 such as <code class="wc-code wc-code--inline language-html">&lt;video&gt;</code>.
             </p>
+            <p class="wc-hint">
+                Closed shadow roots are not very useful. Some developers will see closed mode as an artificial security feature.
+                But let's be clear, it's not a security feature.
+                Closed mode simply prevents outside JS from drilling into an element's internal DOM.
+            </p>
         </section>
     </main>
 
@@ -175,8 +185,8 @@ customElements.define('zep-headline', ZepHeadline);
                 </a>
             </li>
             <li class="wc-list__item">
-                <a class="wc-link wc-ref" href="https://web.dev/index.md/" target="_blank" rel="noopener noreferrer" title="Go to web.dev - Custom Elements Best Practices">
-                    web.dev - Custom Elements Best Practices (https://web.dev/index.md/)
+                <a class="wc-link wc-ref" href="https://web.dev/custom-elements-best-practices/" target="_blank" rel="noopener noreferrer" title="Go to web.dev - Custom Elements Best Practices">
+                    web.dev - Custom Elements Best Practices (https://web.dev/custom-elements-best-practices/)
                 </a>
             </li>
             <li class="wc-list__item">

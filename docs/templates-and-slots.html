@@ -16,9 +16,76 @@
         <h1 class="wc-headline wc-headline--xxl wc-headline--page">A brief introduction to Web Components</h1>
     </header>
     <main class="wc-container">
-        <div>
-            <h2>Templates & Slots</h2>
-        </div>
+        <section class="wc-content">
+            <h1 class="wc-headline wc-headline--xl">Templates & Slots</h1>
+            <p class="wc-content">
+                This article explains how you can use the <code class="wc-code wc-code--inline language-html">&lt;template&gt;</code> and
+                <code class="wc-code wc-code--inline language-html">&lt;slot&gt;</code> elements to create a flexible template that can
+                then be used to populate the shadow DOM of a web component.
+            </p>
+            <h2 class="wc-headline wc-headline--l">The &lt;template&gt; Element</h2>
+            <p class="wc-content">
+                The <code class="wc-code wc-code--inline language-html">&lt;template&gt;</code> element allows you to declare fragments of the DOM
+                which are parsed, inserted at page load, and can be activated later at runtime.
+                Think of a template as a content fragment that is being stored for subsequent use in the document.
+                While the parser does process the contents of the <code class="wc-code wc-code--inline language-html">&lt;template&gt;</code> element while loading the page,
+                it does so only to ensure that those contents are valid; the element's contents are not rendered, however.
+                Templates are an ideal placeholder for declaring the structure of a custom element.
+            </p>
+            <h2 class="wc-headline wc-headline--l">The versatility of template</h2>
+            <p class="wc-content">
+                One of the interesting things about templates is that they can contain any HTML. That includes script and style elements.
+                A very simple example would be a template that appends a button that alerts us when it is clicked.
+            </p>
+
+            <figure class="wc-content">
+                <figcaption>So in practice we can do this:</figcaption>
+                <pre class="wc-code">
+                    <code class="language-javascript">
+&lt;template id="template"&gt;
+    &lt;script&gt;
+        const tpl_button = document.querySelector('.zep-button');
+        tpl_button.addEventListener('click', event => alert(event));
+    &lt;/script&gt;
+    &lt;style&gt;
+        .zep-button {
+            all: unset;
+            background: tomato;
+            border: 0;
+            border-radius: 4px;
+            color: white;
+            font-family: Helvetica;
+            font-size: 1.5rem;
+            padding: .5rem 1rem;
+        }
+    &lt;/style&gt;
+    &lt;button class="zep-button">Log click event&lt;/button&gt;
+&lt;/template&gt;
+                    </code>
+                </pre>
+
+                <p class="codepen" data-height="300" data-theme-id="dark" data-default-tab="html,result" data-slug-hash="RwQpmJo" data-editable="true" data-user="byjs-dev" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+                    <span>See the Pen <a href="https://codepen.io/byjs-dev/pen/RwQpmJo">
+                    Simple &lt;template&gt; example</a> by Joerg Schneider (<a href="https://codepen.io/byjs-dev">@byjs-dev</a>)
+                    on <a href="https://codepen.io">CodePen</a>.</span>
+                </p>
+            </figure>
+            <p class="wc-hint">
+                <strong>But please don't do it that way in the standard DOM.</strong>
+                Why? Because the style tag inside the body is invalid and it's also not scoped to the content of your template, neither is the script.
+                That means everything inside your template will effect the global scope.
+                <strong>However, when using the shadow DOM, things are quite different! Then it makes perfect sense because your content is isolated.</strong>
+            </p>
+
+            <h2 class="wc-headline wc-headline--l">Browser support</h2>
+            <p class="ciu_embed" data-feature="template" data-periods="future_1,current,past_1,past_2" data-accessible-colours="false">
+                <picture>
+                    <source type="image/webp" srcset="https://caniuse.bitsofco.de/image/template.webp">
+                    <source type="image/png" srcset="https://caniuse.bitsofco.de/image/template.png">
+                    <img src="https://caniuse.bitsofco.de/image/template.jpg" alt="Data on support for the HTML template feature across the major browsers from caniuse.com">
+                </picture>
+            </p>
+        </section>
     </main>
 
     <nav>
@@ -46,8 +113,8 @@
                 </a>
             </li>
             <li class="wc-list__item">
-                <a class="wc-link wc-ref" href="https://web.dev/index.md/" target="_blan" rel="noopener noreferrer" title="Go to web.dev - Custom Elements Best Practices">
-                    web.dev - Custom Elements Best Practices (https://web.dev/index.md/)
+                <a class="wc-link wc-ref" href="https://web.dev/custom-elements-best-practices/" target="_blan" rel="noopener noreferrer" title="Go to web.dev - Custom Elements Best Practices">
+                    web.dev - Custom Elements Best Practices (https://web.dev/custom-elements-best-practices/)
                 </a>
             </li>
             <li class="wc-list__item">
