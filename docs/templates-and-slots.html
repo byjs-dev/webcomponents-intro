@@ -16,14 +16,14 @@
         <h1 class="wc-headline wc-headline--xxl wc-headline--page">A brief introduction to Web Components</h1>
     </header>
     <main class="wc-container">
+        <h1 class="wc-headline wc-headline--xl">Templates & Slots</h1>
+        <p class="wc-content">
+            This article explains how you can use the <code class="wc-code wc-code--inline language-html">&lt;template&gt;</code> and
+            <code class="wc-code wc-code--inline language-html">&lt;slot&gt;</code> elements to create a flexible template that can
+            then be used to populate the shadow DOM of a web component.
+        </p>
         <section class="wc-content">
-            <h1 class="wc-headline wc-headline--xl">Templates & Slots</h1>
-            <p class="wc-content">
-                This article explains how you can use the <code class="wc-code wc-code--inline language-html">&lt;template&gt;</code> and
-                <code class="wc-code wc-code--inline language-html">&lt;slot&gt;</code> elements to create a flexible template that can
-                then be used to populate the shadow DOM of a web component.
-            </p>
-            <h2 class="wc-headline wc-headline--l">The &lt;template&gt; Element</h2>
+            <h1 class="wc-headline wc-headline--xl">The &lt;template&gt; Element</h1>
             <p class="wc-content">
                 The <code class="wc-code wc-code--inline language-html">&lt;template&gt;</code> element allows you to declare fragments of the DOM
                 which are parsed, inserted at page load, and can be activated later at runtime.
@@ -32,14 +32,31 @@
                 it does so only to ensure that those contents are valid; the element's contents are not rendered, however.
                 Templates are an ideal placeholder for declaring the structure of a custom element.
             </p>
-            <h2 class="wc-headline wc-headline--l">The versatility of template</h2>
+            <h2 class="wc-headline wc-headline--l">Browser support</h2>
+            <p class="ciu_embed" data-feature="template" data-periods="future_1,current,past_1,past_2" data-accessible-colours="false">
+                <picture>
+                    <source type="image/webp" srcset="https://caniuse.bitsofco.de/image/template.webp">
+                    <source type="image/png" srcset="https://caniuse.bitsofco.de/image/template.png">
+                    <img src="https://caniuse.bitsofco.de/image/template.jpg" alt="Data on support for the HTML template feature across the major browsers from caniuse.com">
+                </picture>
+            </p>
+            <h2 class="wc-headline wc-headline--l">Usage without other Web Components technology</h2>
+            <p class="wc-content">
+                HTML templates can of course be used independently. In this simple use case, we use templates to display the same data in different structures and layouts.
+            </p>
+            <p class="codepen" data-height="500" data-default-tab="html,result" data-slug-hash="zYRzKNZ" data-editable="true" data-user="byjs-dev" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+                <span>See the Pen <a href="https://codepen.io/byjs-dev/pen/zYRzKNZ">
+                Show data differently with HTML templates</a> by Joerg Schneider (<a href="https://codepen.io/byjs-dev">@byjs-dev</a>)
+                on <a href="https://codepen.io">CodePen</a>.</span>
+            </p>
+            <h2 class="wc-headline wc-headline--l">The versatility of HTML templates</h2>
             <p class="wc-content">
                 One of the interesting things about templates is that they can contain any HTML. That includes script and style elements.
                 A very simple example would be a template that appends a button that alerts us when it is clicked.
             </p>
 
             <figure class="wc-content">
-                <figcaption>So in practice we can do this:</figcaption>
+                <figcaption>So in practice we could do this:</figcaption>
                 <pre class="wc-code">
                     <code class="language-javascript">
 &lt;template id="template"&gt;
@@ -64,7 +81,7 @@
                     </code>
                 </pre>
 
-                <p class="codepen" data-height="300" data-theme-id="dark" data-default-tab="html,result" data-slug-hash="RwQpmJo" data-editable="true" data-user="byjs-dev" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+                <p class="codepen" data-height="500" data-theme-id="dark" data-default-tab="html,result" data-slug-hash="RwQpmJo" data-editable="true" data-user="byjs-dev" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
                     <span>See the Pen <a href="https://codepen.io/byjs-dev/pen/RwQpmJo">
                     Simple &lt;template&gt; example</a> by Joerg Schneider (<a href="https://codepen.io/byjs-dev">@byjs-dev</a>)
                     on <a href="https://codepen.io">CodePen</a>.</span>
@@ -76,14 +93,9 @@
                 That means everything inside your template will effect the global scope.
                 <strong>However, when using the shadow DOM, things are quite different! Then it makes perfect sense because your content is isolated.</strong>
             </p>
-
-            <h2 class="wc-headline wc-headline--l">Browser support</h2>
-            <p class="ciu_embed" data-feature="template" data-periods="future_1,current,past_1,past_2" data-accessible-colours="false">
-                <picture>
-                    <source type="image/webp" srcset="https://caniuse.bitsofco.de/image/template.webp">
-                    <source type="image/png" srcset="https://caniuse.bitsofco.de/image/template.png">
-                    <img src="https://caniuse.bitsofco.de/image/template.jpg" alt="Data on support for the HTML template feature across the major browsers from caniuse.com">
-                </picture>
+            <h2 class="wc-headline wc-headline--l">Creating a Custom Element from template</h2>
+            <p class="wc-content">
+                ...
             </p>
         </section>
     </main>
@@ -103,22 +115,22 @@
         <p>Sources:</p>
         <ul class="wc-list">
             <li class="wc-list__item">
-                <a class="wc-link wc-ref" href="https://css-tricks.com/an-introduction-to-web-components/" target="_blan" rel="noopener noreferrer" title="Go to CSS Tricks - an-introduction-to-web-components">
+                <a class="wc-link wc-ref" href="https://css-tricks.com/an-introduction-to-web-components/" target="_blank" rel="noopener noreferrer" title="Go to CSS Tricks - an-introduction-to-web-components">
                     CSS Tricks - An introduction to Web Components (https://css-tricks.com/an-introduction-to-web-components/)
                 </a>
             </li>
             <li class="wc-list__item">
-                <a class="wc-link wc-ref" href="https://web.dev/custom-elements-v1/" target="_blan" rel="noopener noreferrer" title="Go to web.dev - Custom Elements v1 - Reusable Web Components">
+                <a class="wc-link wc-ref" href="https://web.dev/custom-elements-v1/" target="_blank" rel="noopener noreferrer" title="Go to web.dev - Custom Elements v1 - Reusable Web Components">
                     web.dev - Custom Elements v1 - Reusable Web Components (https://web.dev/custom-elements-v1/)
                 </a>
             </li>
             <li class="wc-list__item">
-                <a class="wc-link wc-ref" href="https://web.dev/custom-elements-best-practices/" target="_blan" rel="noopener noreferrer" title="Go to web.dev - Custom Elements Best Practices">
+                <a class="wc-link wc-ref" href="https://web.dev/custom-elements-best-practices/" target="_blank" rel="noopener noreferrer" title="Go to web.dev - Custom Elements Best Practices">
                     web.dev - Custom Elements Best Practices (https://web.dev/custom-elements-best-practices/)
                 </a>
             </li>
             <li class="wc-list__item">
-                <a class="wc-link wc-ref" href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots" target="_blan" rel="noopener noreferrer" title="Go to MDN - Using templates and slots">
+                <a class="wc-link wc-ref" href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots" target="_blank" rel="noopener noreferrer" title="Go to MDN - Using templates and slots">
                     MDN - Using templates and slots (https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots)
                 </a>
             </li>
