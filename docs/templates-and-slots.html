@@ -99,10 +99,18 @@
         <section>
             <h1 class="wc-headline wc-headline--xl">Shadow DOM composition using slots</h1>
             <p class="wc-content">
-                Composition is how we construct apps. Different building blocks (&lt;div&gt;s, &lt;header&gt;s, &lt;form&gt;s, &lt;input&gt;s) come together to form them.
-                Some of these tags even work with each other. Composition is why native elements like &lt;select&gt;, &lt;details&gt;, &lt;form&gt;,
-                and &lt;video&gt; are so flexible. Each of those tags accepts certain HTML as children and does something special with them.
-                For example, &lt;select&gt; knows how to render &lt;option&gt; and &lt;optgroup&gt; into dropdown and multi-select widgets.
+                Composition is how we construct apps.
+                Different building blocks (<code class="wc-code wc-code--inline language-html">&lt;div&gt;</code>,
+                <code class="wc-code wc-code--inline language-html">&lt;header&gt;</code>,
+                <code class="wc-code wc-code--inline language-html">&lt;form&gt;</code>,
+                <code class="wc-code wc-code--inline language-html">&lt;input&gt;</code>) come together to form them.
+                Some of these tags even work with each other. Composition is why native elements like <code class="wc-code wc-code--inline language-html">&lt;select&gt;</code>,
+                <code class="wc-code wc-code--inline language-html">&lt;details&gt;</code>, <code class="wc-code wc-code--inline language-html">&lt;form&gt;</code>,
+                and <code class="wc-code wc-code--inline language-html">&lt;video&gt;</code> are so flexible.
+                Each of those tags accepts certain HTML as children and does something special with them.
+                For example, <code class="wc-code wc-code--inline language-html">&lt;select&gt;</code>
+                knows how to render <code class="wc-code wc-code--inline language-html">&lt;option&gt;</code> and
+                <code class="wc-code wc-code--inline language-html">&lt;optgroup&gt;</code> into dropdown and multi-select widgets.
             </p>
             <p>
                 Shadow DOM composition introduces a bunch of new fundamentals in web development. Let's standardize on some terminology.
@@ -123,8 +131,130 @@
                     </code>
                 </pre>
             </figure>
+            <h3 class="wc-headline wc-headline--m">Shadow DOM</h3>
+            <figure class="wc-content">
+                <figcaption>
+                    The DOM a component author writes.
+                    Shadow DOM is local to the component and defines its internal structure,
+                    scoped CSS, and encapsulates implementation details.
+                    It can also define how to render markup that's authored by the consumer of the component.
+                </figcaption>
+                <pre class="wc-code">
+                    <code class="language-javascript">
+#shadow-root
+    &lt;style&gt;...&lt;/style&gt;
+    &lt;slot name="icon"&gt;&lt;/slot&gt;
+    &lt;span id="wrapper"&gt;
+        &lt;slot&gt;Button&lt;/slot&gt;
+    &lt;/span&gt;
+                    </code>
+                </pre>
+            </figure>
+            <h3 class="wc-headline wc-headline--m">Flattened DOM tree</h3>
+            <figure class="wc-content">
+                <figcaption>
+                    The result of the browser distributing the user's light DOM into your shadow DOM, rendering the final product.
+                    The flattened tree is what you ultimately see in the DevTools and what's rendered on the page.
+                </figcaption>
+                <pre class="wc-code">
+                    <code class="language-javascript">
+&lt;zep-button&gt;
+    #shadow-root
+    &lt;style&gt;...&lt;/style&gt;
+    &lt;slot name="icon"&gt;
+        &lt;img src="triangle.svg" alt="A vector graphic showing a triangle" slot="icon"&gt;
+    &lt;/slot&gt;
+    &lt;span id="wrapper"&gt;
+        &lt;slot&gt;
+            &lt;span&gt;Triangle&lt;/span&gt;
+        &lt;/slot&gt;
+    &lt;/span&gt;
+&lt;/zep-button&gt;
+                    </code>
+                </pre>
+            </figure>
 
             <h2 class="wc-headline wc-headline--l">The &lt;slot&gt; Element</h2>
+            <p class="wc-content">
+                Slots are placeholders inside your component that users can fill with their own markup.
+                Elements are allowed to "cross" the shadow DOM boundary when a <code class="wc-code wc-code--inline language-html">&lt;slot&gt;</code> invites them in.
+                Slots don't physically move DOM; they render it at another location inside the shadow DOM.
+            </p>
+            <p class="wc-hint">
+                Slots are a way of creating a "declarative API" for a web component.
+                They mix-in the user's DOM to help render the overall component, thus, composing different DOM trees together.
+                For those of you who remember AngularJS, this is a similar concept to ng-transclude or using props.children in React.
+            </p>
+            <h3 class="wc-headline wc-headline--m">Example with a Tabs component</h3>
+            <figure class="wc-content">
+                <figcaption>
+                    Shadow DOM of a fictional <code class="wc-code wc-code--inline language-html">&lt;zep-tabs&gt;</code> component
+                </figcaption>
+                <pre class="wc-code">
+                    <code class="language-javascript">
+#shadow-root
+    &lt;div id="tabs"&gt;
+    &lt;slot id="tabsSlot" name="title"&gt;&lt;/slot&gt; &lt;!-- named slot --&gt;
+    &lt;/div&gt;
+    &lt;div id="panels"&gt;
+    &lt;slot id="panelsSlot"&gt;&lt;/slot&gt;
+    &lt;/div&gt;
+                    </code>
+                </pre>
+            </figure>
+            <figure class="wc-content">
+                <figcaption>
+                    Component users declares <code class="wc-code wc-code--inline language-html">&lt;zep-tabs&gt;</code> like so:
+                </figcaption>
+                <pre class="wc-code">
+                    <code class="language-javascript">
+&lt;zep-tabs&gt;
+    &lt;button slot="title"&gt;Title&lt;/button&gt;
+    &lt;button slot="title" selected&gt;Title 2&lt;/button&gt;
+    &lt;button slot="title"&gt;Title 3&lt;/button&gt;
+    &lt;section&gt;content panel 1&lt;/section&gt;
+    &lt;section&gt;content panel 2&lt;/section&gt;
+    &lt;section&gt;content panel 3&lt;/section&gt;
+&lt;/zep-tabs>
+
+&lt;!-- Using &lt;h2&gt;'s and changing the ordering would also work! --&gt;
+&lt;zep-tabs&gt;
+    &lt;h2 slot="title"&gt;Title&lt;/h2&gt;
+    &lt;section&gt;content panel 1&lt;/section&gt;
+    &lt;h2 slot="title" selected&gt;Title 2&lt;/h2&gt;
+    &lt;section&gt;content panel 2&lt;/section&gt;
+    &lt;h2 slot="title"&gt;Title 3&lt;/h2&gt;
+    &lt;section&gt;content panel 3&lt;/section&gt;
+&lt;/zep-tabs&gt;
+                    </code>
+                </pre>
+            </figure>
+            <figure class="wc-content">
+                <figcaption>
+                    The flattened tree looks something like this:
+                </figcaption>
+                <pre class="wc-code">
+                    <code class="language-javascript">
+&lt;zep-tabs&gt;
+    #shadow-root
+    &lt;div id="tabs"&gt;
+        &lt;slot id="tabsSlot" name="title"&gt;
+        &lt;button slot="title"&gt;Title&lt;/button&gt;
+        &lt;button slot="title" selected&gt;Title 2&lt;/button&gt;
+        &lt;button slot="title"&gt;Title 3&lt;/button&gt;
+        &lt;/slot&gt;
+    &lt;/div&gt;
+    &lt;div id="tabs"&gt;
+        &lt;slot id="panelsSlot"&gt;
+        &lt;section&gt;content panel 1&lt;/section&gt;
+        &lt;section&gt;content panel 2&lt;/section&gt;
+        &lt;section&gt;content panel 3&lt;/section&gt;
+        &lt;/slot&gt;
+    &lt;/div&gt;
+&lt;/zep-tabs>
+                    </code>
+                </pre>
+            </figure>
         </section>
     </main>
 
