@@ -112,7 +112,7 @@
                 knows how to render <code class="wc-code wc-code--inline language-html">&lt;option&gt;</code> and
                 <code class="wc-code wc-code--inline language-html">&lt;optgroup&gt;</code> into dropdown and multi-select widgets.
             </p>
-            <p>
+            <p class="wc-content">
                 Shadow DOM composition introduces a bunch of new fundamentals in web development. Let's standardize on some terminology.
             </p>
             <h2 class="wc-headline wc-headline--m">Light DOM</h2>
@@ -256,6 +256,35 @@
                     </code>
                 </pre>
             </figure>
+            <p class="wc-content">
+                The component is able to handle different configurations,
+                but the flattened DOM tree remains the same.
+                We can also switch from <code class="wc-code wc-code--inline language-html">&lt;button&gt;</code> to <code class="wc-code wc-code--inline language-html">&lt;h2&gt;</code>.
+                This component was authored to handle different types of children… just like <code class="wc-code wc-code--inline language-html">&lt;select&gt;</code> does!
+            </p>
+        </section>
+        <section class="wc-content">
+            <h1 class="wc-headline wc-headline--xl">Styling Custom Elements</h1>
+            <p class="wc-content">
+                follow
+                <a class="wc-link" href="https://web.dev/shadowdom-v1/#styling" target="_blank" rel="noopener noreferrer" title="Go to https://web.dev/shadowdom-v1/#styling">
+                    https://web.dev/shadowdom-v1/#styling
+                </a>
+                <br>
+                and use
+                <a class="wc-link" href="https://zepdev.github.io/web-components-library-gh-pages/?path=/docs/components-zbutton--default" target="_blank" rel="noopener noreferrer" title="Go to https://zepdev.github.io/web-components-library-gh-pages/?path=/docs/components-zbutton--default">
+                    https://zepdev.github.io/web-components-library-gh-pages/?path=/docs/components-zbutton--default
+                </a>
+                <br>
+                as an example
+
+            </p>
+        </section>
+        <section class="wc-content">
+            <h1 class="wc-headline wc-headline--xl">Custom Elements - Accessibility</h1>
+            <p class="wc-content">
+                to be continued... (pitfalls and how to avoid them -> using slots, form-associated custom elements, etc.)
+            </p>
         </section>
     </main>
 
